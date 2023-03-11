@@ -6,9 +6,9 @@ function Box(props) {
   const ref = useRef();
   useFrame((state, delta) => {
     getGyroscope((event) => {
-      ref.current.position.x = event.alpha * 0.001;
-      ref.current.position.y = event.beta * 0.01;
-      ref.current.position.z = event.gamma * 0.01;
+      ref.current.position.x = ((event.alpha % 360 + 360) % 360) * 0.001;
+      ref.current.position.y = ((event.beta % 360 + 360) % 360) * 0.01;
+      ref.current.position.z = ((event.gamma % 360 + 360) % 360) * 0.01;
     });
   })
 
