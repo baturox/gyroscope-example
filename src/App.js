@@ -7,9 +7,9 @@ function Box(props) {
   useFrame((state, delta) => {
     setInterval(() => {
       const gyroscope = getGyroscope();
-      ref.current.position.x = gyroscope.x / 90;
-      ref.current.position.y = gyroscope.y / 90;
-      ref.current.position.z = gyroscope.z / 90;
+      ref.current.position.x = gyroscope.x / 1000;
+      ref.current.position.y = gyroscope.y / 1000;
+      ref.current.position.z = gyroscope.z / 1000;
     }, 1000);
   })
 
@@ -39,20 +39,25 @@ export default function App() {
     setX(gyroscope.x);
     setY(gyroscope.y);
     setZ(gyroscope.z);
-  }, 1000);
+  }, 100);
 
   return (
     <div>
-      <button onClick={() => {
-        sendPermission().then(response => {
-          console.log('permission: ' + response);
-          if (response) {
-            setStart(true);
-          }
-        });
-      }}>
-        Start
-      </button>
+      {!start && (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+          <button
+            style={{ width: '100%', height: 50 }}
+            onClick={() => {
+              sendPermission().then(response => {
+                console.log('permission: ' + response);
+                if (response) {
+                  setStart(true);
+                }
+              });
+            }}>
+            Start
+          </button>
+        </div>)}
       {start && (
         <>
           <ul>
