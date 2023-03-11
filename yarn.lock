@@ -7852,10 +7852,10 @@ react@^18.2.0:
   dependencies:
     loose-envify "^1.1.0"
 
-reactjs-gyroscope@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/reactjs-gyroscope/-/reactjs-gyroscope-1.0.1.tgz#7e4f0e633b42fe8d5fa9ce77f0de33c5f9d4cee5"
-  integrity sha512-YxidWLz95BdyLqEObr3qpXvaEesXhunrtgCE68A+EWvJCbWQIWXDjcmJN6S495REw9NsXE0EU6ko1Ho0yCUsmg==
+reactjs-gyroscope@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/reactjs-gyroscope/-/reactjs-gyroscope-1.0.2.tgz#0aa48549812d92981ebf2d668618f9a861af8471"
+  integrity sha512-9aswW1zQinhvw9PCxB9wv+xyo4bYHGNAQa1v495+GYDY0w+OhUUpyhN5M9Wf/ZGVg5W7qUpfXp1sslewXaIl8g==
 
 read-cache@^1.0.0:
   version "1.0.0"

@@ -2,9 +2,7 @@ import { useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import getGyroscope from 'reactjs-gyroscope';
 
-
 function Box(props) {
-  // This reference gives us direct access to the THREE.Mesh object
   const ref = useRef()
   useFrame((state, delta) => {
     setInterval(() => {
@@ -18,9 +16,6 @@ function Box(props) {
     }, 1000);
   })
 
-  // Subscribe this component to the render-loop, rotate the mesh every frame
-
-  // Return the view, these are regular Threejs elements expressed in JSX
   return (
     <mesh
       {...props}
@@ -45,8 +40,6 @@ export default function App() {
     setZ(gyroscope.z);
   }, 1000);
 
-
-
   return (
     <div>
       <ul>
@@ -61,6 +54,5 @@ export default function App() {
         </Canvas>
       </div>
     </div>
-
   )
 }
