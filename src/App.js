@@ -10,7 +10,7 @@ function Box(props) {
       ref.current.position.x = gyroscope.x / 1000;
       ref.current.position.y = gyroscope.y / 1000;
       ref.current.position.z = gyroscope.z / 1000;
-    }, 1000);
+    }, 100);
   })
 
   return (
@@ -26,8 +26,6 @@ function Box(props) {
 }
 
 export default function App() {
-
-
   const [start, setStart] = useState(false);
 
   const [x, setX] = useState(0);
