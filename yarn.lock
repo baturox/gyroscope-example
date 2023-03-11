@@ -7852,9 +7852,6 @@ react@^18.2.0:
   dependencies:
     loose-envify "^1.1.0"
 
-reactjs-gyroscope@../reactjs-gyroscope:
-  version "1.0.5"
-
 read-cache@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/read-cache/-/read-cache-1.0.0.tgz#e664ef31161166c9751cdbe8dbcf86b5fb58f774"
