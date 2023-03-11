@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { getGyroscope, sendPermission } from './gyro';
+import { getGyroscope, gyroscopePermission } from 'reactjs-gyroscope';
 
 function Box(props) {
   const ref = useRef();
   useFrame((state, delta) => {
-    const gyroscope = getGyroscope((event) => {
-      ref.current.position.x = event.alpha / 1000;
-      ref.current.position.y = event.beta / 1000;
-      ref.current.position.z = event.gamma / 1000;
+    const velocity = 0.01;
+    getGyroscope((event) => {
+      ref.current.position.x = event.alpha * velocity;
+      ref.current.position.y = event.beta * velocity;
+      ref.current.position.z = event.gamma * velocity;
     });
   })
 
@@ -31,11 +32,13 @@ export default function App() {
   const [y, setY] = useState(0);
   const [z, setZ] = useState(0);
 
-  const gyroscope = getGyroscope((event) => {
-    setX(event.alpha);
-    setY(event.beta);
-    setZ(event.gamma);
-  });
+  useEffect(() => {
+    getGyroscope((event) => {
+      setX(event.alpha);
+      setY(event.beta);
+      setZ(event.gamma);
+    });
+  }, [start])
 
   return (
     <div>
@@ -44,8 +47,7 @@ export default function App() {
           <button
             style={{ width: '100%', height: 50 }}
             onClick={() => {
-              sendPermission().then(response => {
-                console.log('permission: ' + response);
+              gyroscopePermission().then(response => {
                 if (response) {
                   setStart(true);
                 }
