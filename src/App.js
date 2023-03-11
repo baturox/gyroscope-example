@@ -5,12 +5,11 @@ import { getGyroscope, sendPermission } from './gyro';
 function Box(props) {
   const ref = useRef();
   useFrame((state, delta) => {
-    setInterval(() => {
-      const gyroscope = getGyroscope();
-      ref.current.position.x = gyroscope.x / 1000;
-      ref.current.position.y = gyroscope.y / 1000;
-      ref.current.position.z = gyroscope.z / 1000;
-    }, 100);
+    const gyroscope = getGyroscope((event) => {
+      ref.current.position.x = event.alpha / 1000;
+      ref.current.position.y = event.beta / 1000;
+      ref.current.position.z = event.gamma / 1000;
+    });
   })
 
   return (
@@ -32,12 +31,11 @@ export default function App() {
   const [y, setY] = useState(0);
   const [z, setZ] = useState(0);
 
-  setInterval(() => {
-    const gyroscope = getGyroscope();
-    setX(gyroscope.x);
-    setY(gyroscope.y);
-    setZ(gyroscope.z);
-  }, 100);
+  const gyroscope = getGyroscope((event) => {
+    setX(event.alpha);
+    setY(event.beta);
+    setZ(event.gamma);
+  });
 
   return (
     <div>
