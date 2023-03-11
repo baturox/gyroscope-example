@@ -5,11 +5,10 @@ import { getGyroscope, gyroscopePermission } from 'reactjs-gyroscope';
 function Box(props) {
   const ref = useRef();
   useFrame((state, delta) => {
-    const velocity = 0.01;
     getGyroscope((event) => {
-      ref.current.position.x = event.alpha * velocity;
-      ref.current.position.y = event.beta * velocity;
-      ref.current.position.z = event.gamma * velocity;
+      ref.current.position.x = event.alpha * 0.001;
+      ref.current.position.y = event.beta * 0.01;
+      ref.current.position.z = event.gamma * 0.01;
     });
   })
 
@@ -66,7 +65,7 @@ export default function App() {
 
           <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center', height: '100vh' }}>
             <Canvas>
-              <Box position={[0.1, 0, 0]} />
+              <Box position={[0, 0, 0]} />
             </Canvas>
           </div>
         </>)}
