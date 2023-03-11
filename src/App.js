@@ -7,9 +7,6 @@ function Box(props) {
   useFrame((state, delta) => {
     setInterval(() => {
       const gyroscope = getGyroscope();
-      console.log(gyroscope.x);
-      console.log(ref);
-
       ref.current.position.x = gyroscope.x / 90;
       ref.current.position.y = gyroscope.y / 90;
       ref.current.position.z = gyroscope.z / 90;
@@ -33,7 +30,7 @@ export default function App() {
   useEffect(() => {
     sendPermission();
   }, []);
-  
+
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
   const [z, setZ] = useState(0);

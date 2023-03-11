@@ -12,6 +12,7 @@ const getGyroscopeDataFromEvent = event => {
 };
 
 export const sendPermission = () => {
+    console.log(DeviceMotionEvent, JSON.stringify(DeviceMotionEvent), DeviceMotionEvent.requestPermission);
     if (DeviceMotionEvent && typeof DeviceMotionEvent.requestPermission === "function") {
         DeviceMotionEvent.requestPermission();
     } else {
