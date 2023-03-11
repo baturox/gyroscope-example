@@ -1,9 +1,9 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import getGyroscope from 'reactjs-gyroscope';
+import { getGyroscope, sendPermission } from './gyro';
 
 function Box(props) {
-  const ref = useRef()
+  const ref = useRef();
   useFrame((state, delta) => {
     setInterval(() => {
       const gyroscope = getGyroscope();
@@ -29,6 +29,11 @@ function Box(props) {
 }
 
 export default function App() {
+
+  useEffect(() => {
+    sendPermission();
+  }, []);
+  
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
   const [z, setZ] = useState(0);
