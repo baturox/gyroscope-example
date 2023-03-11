@@ -27,9 +27,8 @@ function Box(props) {
 
 export default function App() {
 
-  useEffect(() => {
-    sendPermission();
-  }, []);
+
+  const [start, setStart] = useState(false);
 
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
@@ -44,17 +43,30 @@ export default function App() {
 
   return (
     <div>
-      <ul>
-        <li>x: {x}</li>
-        <li>y: {y}</li>
-        <li>z: {z}</li>
-      </ul>
-      <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center', height: '100vh' }}>
+      <button onClick={() => {
+        sendPermission().then(response => {
+          console.log('permission: ' + response);
+          if (response) {
+            setStart(true);
+          }
+        });
+      }}>
+        Start
+      </button>
+      {start && (
+        <>
+          <ul>
+            <li>x: {x}</li>
+            <li>y: {y}</li>
+            <li>z: {z}</li>
+          </ul>
 
-        <Canvas>
-          <Box position={[0.1, 0, 0]} />
-        </Canvas>
-      </div>
+          <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center', height: '100vh' }}>
+            <Canvas>
+              <Box position={[0.1, 0, 0]} />
+            </Canvas>
+          </div>
+        </>)}
     </div>
   )
 }
